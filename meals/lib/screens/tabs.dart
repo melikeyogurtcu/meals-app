@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/models/filter_model.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
@@ -6,13 +7,6 @@ import '../widgets/main_drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/providers/favorites_provider.dart';
 import 'package:meals/providers/filters_provider.dart';
-
-const kInitialFilters = {
-  Filter.glutenFree: false,
-  Filter.lactosefree: false,
-  Filter.vegan: false,
-  Filter.vegetarian: false,
-};
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
@@ -33,7 +27,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
   void _setScreen(String identifier) async {
     Navigator.of(context).pop();
     if (identifier == 'filters') {
-      await Navigator.of(context).push<Map<Filter, bool>>(
+      await Navigator.of(context).push<Map<FilterModel, bool>>(
         MaterialPageRoute(builder: (ctx) => const FiltersScreen()),
       );
     }
