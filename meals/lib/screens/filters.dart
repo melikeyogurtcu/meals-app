@@ -14,93 +14,48 @@ class FiltersScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          SwitchListTile(
-            value: activeFilters[Filter.glutenFree]!,
-            onChanged: (isChecked) {
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.glutenFree, isChecked);
-            },
-            title: Text(
-              'Gluten-free',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              'Only include gluten-free meals.',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: activeFilters[Filter.lactosefree]!,
-            onChanged: (isChecked) {
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.lactosefree, isChecked);
-            },
-            title: Text(
-              'Lactose-free',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              'Only include lactose-free meals.',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: activeFilters[Filter.vegan]!,
-            onChanged: (isChecked) {
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.vegan, isChecked);
-            },
-            title: Text(
-              'Vegan foods',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              'Only include vegan meals.',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: activeFilters[Filter.vegetarian]!,
-            onChanged: (isChecked) {
-              ref
-                  .read(filtersProvider.notifier)
-                  .setFilter(Filter.vegetarian, isChecked);
-            },
-            title: Text(
-              'Vegetarian foods',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              'Only include vegetarian meals.',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
+          Column(
+            children: activeFilters
+                .map(
+                  (model, value) {
+                    return MapEntry(
+                      key,
+                      SwitchListTile(
+                        value: value,
+                        onChanged: (isChecked) {
+                          ref
+                              .read(filtersProvider.notifier)
+                              .setFilter(model, isChecked);
+                        },
+                        title: Text(
+                          model.name!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                              ),
+                        ),
+                        subtitle: Text(
+                          model.description!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                              ),
+                        ),
+                        activeColor: Theme.of(context).colorScheme.tertiary,
+                        contentPadding:
+                            const EdgeInsets.only(left: 34, right: 22),
+                      ),
+                    );
+                  },
+                )
+                .values
+                .toList(),
           ),
         ],
       ),
