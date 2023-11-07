@@ -25,7 +25,9 @@ class MealsScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Visibility(
+        
         visible: meals.isNotEmpty,
+        
         replacement: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -46,6 +48,8 @@ class MealsScreen extends StatelessWidget {
             ],
           ),
         ),
+
+        
         child: ListView.builder(
           itemCount: meals.length,
           itemBuilder: (ctx, index) => MealItem(
@@ -55,7 +59,10 @@ class MealsScreen extends StatelessWidget {
             },
           ),
         ),
+        
+        
       ),
+      
     );
   }
 }
