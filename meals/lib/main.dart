@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals/screens/tabs.dart';
+import 'package:meals/screens/tabs_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/theme.dart';
 

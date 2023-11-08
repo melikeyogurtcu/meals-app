@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/meal.dart';
+import '../models/meal_model.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

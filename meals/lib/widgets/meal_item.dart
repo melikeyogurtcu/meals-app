@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-import '../models/meal.dart';
+import '../models/meal_model.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({super.key, required this.meal, required this.onSelectMeal});
